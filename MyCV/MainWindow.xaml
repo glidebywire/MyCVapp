@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:MyCV"
         mc:Ignorable="d" 
         d:DataContext="{d:DesignInstance Type=vm:CVviewModel, IsDesignTimeCreatable=True}"
-        Title="My CV" Height="29.7cm" Width="21.0cm">
+        Title="My CV" Height="29.7cm" Width="21.0cm" VerticalAlignment="Center" HorizontalAlignment="Center">
     <Window.InputBindings>
         <KeyBinding Key="F5"
                 Command="{Binding PrintCmd}"
@@ -42,9 +42,9 @@
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Label Margin="30,0,0,0" Grid.Row="0" Content="{Binding Name}" Background="Transparent" VerticalAlignment="Bottom" FontFamily="Arial" Foreground="#3A393E" FontSize="29pt" FontStyle="Normal" FontWeight="ExtraBold"/>
-                <Label Margin="30,0,0,0" Grid.Row="1" Content="{Binding SurName}" Background="Transparent" VerticalAlignment="Top" FontFamily="Arial" Foreground="#3A393E" FontSize="29 pt" FontStyle="Normal" FontWeight="ExtraBold"/>
-                <Label Margin="30,0,0,0" Grid.Row="2" Content="{Binding Title}" Background="Transparent" VerticalAlignment="Top" FontFamily="Arial" Foreground="#3A393E" FontSize="14 pt" FontStyle="Normal" FontWeight="Light"/>
+                <Label Margin="30,0,0,0" Grid.Row="0" Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Bottom" FontFamily="Arial" Foreground="#3A393E" FontSize="29pt" FontStyle="Normal" FontWeight="ExtraBold"/>
+                <Label Margin="30,0,0,0" Grid.Row="1" Content="{Binding SurName, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Top" FontFamily="Arial" Foreground="#3A393E" FontSize="29 pt" FontStyle="Normal" FontWeight="ExtraBold"/>
+                <Label Margin="30,0,0,0" Grid.Row="2" Content="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Top" FontFamily="Arial" Foreground="#3A393E" FontSize="14 pt" FontStyle="Normal" FontWeight="Light"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -73,7 +73,7 @@
                     </Rectangle.Fill>
                 </Rectangle>
                 <Label Margin="30,0,0,0" Grid.Row="0" Content="PROFILE" Background="Transparent" VerticalAlignment="Center" FontFamily="Arial" Foreground="#3A393E" FontSize="20 pt" FontStyle="Normal" FontWeight="Bold"/>
-                <TextBlock Margin="35,20,0,10" Grid.Row="1" Text="{Binding Profile}" Background="Transparent" VerticalAlignment="Center" TextWrapping="Wrap" TextTrimming="WordEllipsis"
+                <TextBlock Margin="35,20,0,10" Grid.Row="1" Text="{Binding Profile, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Center" TextWrapping="Wrap" TextTrimming="WordEllipsis"
                        FontFamily="Arial" Foreground="#3A393E" FontSize="10 pt" FontStyle="Normal" FontWeight="Normal" LineHeight="20"/>
             </Grid>
             <Grid Grid.Row="2">
@@ -102,7 +102,7 @@
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
-                <ListView Margin="3,-20,0,0" Grid.Row="1" ItemsSource="{Binding Experiences}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                <ListView Margin="3,-20,0,0" Grid.Row="1" ItemsSource="{Binding Experiences, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           Background="Transparent" BorderBrush="Transparent">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -121,20 +121,20 @@
                                         <SolidColorBrush Color="#3A393E" />
                                    </Rectangle.Fill>
                                 </Rectangle>
-                                <TextBlock Margin="30,0,0,0" Grid.Row="0" Grid.Column="0" Text="{Binding JobTimeSpan}" Background="Transparent" VerticalAlignment="Center" TextWrapping="Wrap" TextTrimming="WordEllipsis"
+                                <TextBlock Margin="30,0,0,0" Grid.Row="0" Grid.Column="0" Text="{Binding JobTimeSpan, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Center" TextWrapping="Wrap" TextTrimming="WordEllipsis"
                                        FontFamily="Arial" Foreground="#3A393E" FontSize="10pt" FontStyle="Normal" FontWeight="Normal"/>
                                 <Rectangle Margin="40,28,0,0" Width="60" Height="1" HorizontalAlignment="Left">
                                     <Rectangle.Fill>
                                         <SolidColorBrush Color="#3A393E" />
                                     </Rectangle.Fill>
                                 </Rectangle>
-                                <Label Margin="0,0,0,0" Grid.Row="0" Grid.Column="2" Content="{Binding JobPosition}" Background="Transparent" VerticalAlignment="Top" 
+                                <Label Margin="0,0,0,0" Grid.Row="0" Grid.Column="2" Content="{Binding JobPosition, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Top" 
                                        FontFamily="Arial" Foreground="#3A393E" FontSize="16" FontStyle="Normal" FontWeight="DemiBold"/>
-                                <Label Margin="0,20,0,0" Grid.Row="0" Grid.Column="2" Content="{Binding Company}" Background="Transparent" VerticalAlignment="Bottom" 
+                                <Label Margin="0,20,0,0" Grid.Row="0" Grid.Column="2" Content="{Binding Company, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" VerticalAlignment="Bottom" 
                                        FontFamily="Arial" Foreground="#3A393E" FontSize="14" FontStyle="Normal" FontWeight="Medium"/>
-                                <TextBlock Margin="35,20,0,0" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding JobDescription}" Background="Transparent"
+                                <TextBlock Margin="35,20,0,0" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding JobDescription, UpdateSourceTrigger=PropertyChanged}" Background="Transparent"
                                        FontFamily="Arial" Foreground="#3A393E" FontSize="13" FontStyle="Normal" FontWeight="Medium" TextWrapping="Wrap" LineHeight="20"/>
-                                <ListView Margin="30,0,0,0" HorizontalAlignment="Left" Grid.Row="2" MaxWidth="475" Grid.ColumnSpan="2" ItemsSource="{Binding BulletJobTasks}" Background="Transparent" BorderBrush="Transparent">
+                                <ListView Margin="30,0,0,0" HorizontalAlignment="Left" Grid.Row="2" MaxWidth="473" Grid.ColumnSpan="2" ItemsSource="{Binding BulletJobTasks, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="Transparent">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Grid Background="Transparent">
@@ -167,9 +167,9 @@
                 </Rectangle.Fill>
             </Rectangle>
             <!-- clip picture in round circle -->
-            <Image Source="/MyCV;component/Images/default.jpg" Margin="94,0,93,15" />
+            <Image Source="{Binding Picture, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="50,0,50,15" />
             <Label Margin="30,0,0,257" Grid.Row="1" Content="CONTACTS" Background="Transparent" FontFamily="Arial" Foreground="#9FC089" FontSize="20 pt" FontStyle="Normal" FontWeight="Bold" Grid.RowSpan="2"/>
-            <ListView Margin="30,50,20,5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ContactItems}" Background="Transparent" BorderBrush="Transparent">
+            <ListView Margin="30,50,20,5" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ContactItems, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="Transparent" Margin="0,0,0,7">
@@ -179,8 +179,8 @@
                                 </Rectangle.Fill>
                             </Rectangle>
                             <TextBlock Margin="0,15,0,0" FontFamily="Arial" FontSize="9 pt" FontStyle="Normal" FontWeight="Bold" Background="Transparent">
-                                <Run Text="{Binding ContactKey}" Foreground="#9FC089"/><Run />      
-                                <Run Text="{Binding ContactValue}" Foreground="#D7D6DB"/><Run />
+                                <Run Text="{Binding ContactKey, UpdateSourceTrigger=PropertyChanged}" Foreground="#9FC089"/><Run />      
+                                <Run Text="{Binding ContactValue, UpdateSourceTrigger=PropertyChanged}" Foreground="#D7D6DB"/><Run />
                             </TextBlock>
                         </Grid>
                     </DataTemplate>
@@ -192,13 +192,13 @@
                     <SolidColorBrush Color="#9FC089" />
                 </Rectangle.Fill>
             </Rectangle>
-            <ListView Margin="30,60,20,5" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding EducationItems}" Background="Transparent" BorderBrush="Transparent">
+            <ListView Margin="30,60,20,5" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding EducationItems, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Background="Transparent" Orientation="Vertical">
-                            <TextBlock Margin="0,2,0,0" Text="{Binding Year}" Foreground="#D7D6DB" FontFamily="Arial" FontSize="9 pt" FontStyle="Normal" FontWeight="Bold" Background="Transparent" />
-                            <TextBlock Margin="0,2,0,0" Text="{Binding Degree}" Foreground="#D7D6DB" FontFamily="Arial" FontSize="12 pt" FontStyle="Normal" FontWeight="Bold" Background="Transparent" />
-                            <TextBlock Margin="0,2,0,0" Text="{Binding Institution}" Foreground="#D7D6DB" FontFamily="Arial" FontSize="9 pt" FontStyle="Normal" FontWeight="Normal" Background="Transparent" />
+                            <TextBlock Margin="0,2,0,0" Text="{Binding Year, UpdateSourceTrigger=PropertyChanged}" Foreground="#D7D6DB" FontFamily="Arial" FontSize="9 pt" FontStyle="Normal" FontWeight="Bold" Background="Transparent" />
+                            <TextBlock Margin="0,2,0,0" Text="{Binding Degree, UpdateSourceTrigger=PropertyChanged}" Foreground="#D7D6DB" FontFamily="Arial" FontSize="12 pt" FontStyle="Normal" FontWeight="Bold" Background="Transparent" />
+                            <TextBlock Margin="0,2,0,0" Text="{Binding Institution, UpdateSourceTrigger=PropertyChanged}" Foreground="#D7D6DB" FontFamily="Arial" FontSize="9 pt" FontStyle="Normal" FontWeight="Normal" Background="Transparent" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -225,18 +225,18 @@
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
-                <ListView Margin="30,60,20,5" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Skills}" Background="Transparent" BorderBrush="Transparent">
+                <ListView Margin="30,60,20,5" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Skills, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="Transparent">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Background="Transparent" Orientation="Vertical">
-                                <TextBlock Margin="0,2,0,0" Text="{Binding SkillName}" Foreground="#3A393E" FontFamily="Arial" FontSize="9 pt" FontStyle="Normal" FontWeight="Bold" Background="Transparent" />
+                                <TextBlock Margin="0,2,0,0" Text="{Binding SkillName, UpdateSourceTrigger=PropertyChanged}" Foreground="#3A393E" FontFamily="Arial" FontSize="9 pt" FontStyle="Normal" FontWeight="Bold" Background="Transparent" />
                                 <Grid Margin="0,5">
                                     <Rectangle Width="220" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left">
                                         <Rectangle.Fill>
                                             <SolidColorBrush Color="#D7D6DB" />
                                         </Rectangle.Fill>
                                     </Rectangle>
-                                    <Rectangle Width="{Binding SkillValue}" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                    <Rectangle Width="{Binding SkillValue, UpdateSourceTrigger=PropertyChanged}" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left">
                                         <Rectangle.Fill>
                                             <SolidColorBrush Color="#3A393E" />
                                         </Rectangle.Fill>

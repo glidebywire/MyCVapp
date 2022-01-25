@@ -14,6 +14,7 @@ using System.Windows;
 using System.Printing;
 using System.Windows.Documents;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace MyCV.ViewModel
 {
@@ -75,8 +76,8 @@ namespace MyCV.ViewModel
 
         #region properties
 
-        string mPicture;
-        public string Picture
+        ImageSource mPicture;
+        public ImageSource Picture
         {
             get => mPicture;
             set
@@ -186,12 +187,14 @@ namespace MyCV.ViewModel
         }
 
         void InitFromFile()
-        {
+        {           
             Name = mJsonCV.Applicant.Name;
             SurName = mJsonCV.Applicant.SurName;
             Title = mJsonCV.Applicant.Title;
             Profile = mJsonCV.Applicant.Profile;
-            Picture = mJsonCV.Applicant.Picture;
+            var GetDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var filePath = Path.Combine(GetDirectory, mJsonCV.Applicant.Picture);
+            Picture = new BitmapImage(new Uri(filePath, UriKind.Absolute)); ;
             mJsonCV.Contacts.ForEach(ContactItems.Add);
             mJsonCV.Educations.ForEach(EducationItems.Add);
             mJsonCV.Skills.ForEach(Skills.Add);
@@ -223,9 +226,8 @@ namespace MyCV.ViewModel
             bullets.Add("• Emphasize accomplishments over work duties.");
             bullets.Add("• Use action-benefit statements to describe your achievements.");
             bullets.Add("• Tailor your content to the position.");
-            bullets.Add("• Make it easily readable.");
-
-            mPicture = "/MyCV;component/Images/default.jpg";
+            bullets.Add("• Make it easily readable.");            
+                        
             Experiences.Add(new ExperienceItemViewModel(new ExperienceItem()
             {
                 Company = "The Company / institute",
@@ -258,7 +260,9 @@ namespace MyCV.ViewModel
             ct.SurName = SurName;
             ct.Title = Title;
             ct.Profile = Profile;
-            ct.Picture = Picture;
+            var GetDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var filePath = Path.Combine(GetDirectory, "default.jpg");
+            ct.Picture = filePath;
             mJsonCV.Applicant = ct;
             mJsonCV.Contacts = ContactItems.ToList();
             mJsonCV.Educations = EducationItems.ToList();

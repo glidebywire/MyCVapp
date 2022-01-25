@@ -41,12 +41,12 @@ namespace MyCV.Model
         {
             get
             {
-                return mSkillValue * 220 / 100;
+                return mSkillValue;
             }
 
             set
             {
-                value = value * 100 / 220;
+                value = value * 220 / 100;
                 mSkillValue = value;                
             }
         }
